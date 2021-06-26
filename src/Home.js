@@ -27,7 +27,7 @@ export default class Home extends Component {
                         <Text style={{ color: "white" }}>Search</Text>
                     </TouchableOpacity>
                 </View>
-                {this.state.resData === [] ? <Text>No Record found</Text> : this.state.resData?.map((x) =>
+                {typeof this.state.resData == 'undefined' ? <Text>No Record found</Text> : this.state.resData?.map((x) =>
                     <View style={{ height: 250, backgroundColor: "rgba(0,0,0,0.2)", width: '97%', marginTop: 10, justifyContent: "center", paddingHorizontal: 10 }}  >
                         <TouchableOpacity style={{ flexDirection: "row", height: "100%", width: "100%", alignItems: "center", }}
                             onPress={() => this.props.navigation.navigate("Detail", x.imdbID)}
