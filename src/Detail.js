@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { Image, ScrollView, Text, View } from 'react-native'
+import { Image, ScrollView, Text, View, StyleSheet } from 'react-native'
 import { TouchableOpacity } from 'react-native-gesture-handler'
 
 export default function Detail({ route }) {
@@ -20,11 +20,11 @@ export default function Detail({ route }) {
 
     var x = data
     return (
-        <View style={{ flex: 1, backgroundColor: "rgba(0,0,0,0.2)", paddingHorizontal: 10 }} >
-            <Image source={{ uri: x.Poster }} style={{ height: "30%", width: "100%", marginVertical: 10 }} resizeMode="stretch" />
+        <View style={styles.main} >
+            <Image source={{ uri: x.Poster }} style={styles.poster} resizeMode="stretch" />
             <ScrollView>
-                <Text style={{ fontSize: 26, color: "black" }}>Title: {x.Title}</Text>
-                <View style={{ width: "100%", height: 1, borderBottomWidth: 0.5, marginVertical: 10 }}></View>
+                <Text style={styles.title}>Title: {x.Title}</Text>
+                <View style={styles.devider}></View>
                 <Text style={{ fontSize: 18 }}>Year: {x.Year}</Text>
                 <Text style={{ fontSize: 18 }}>Genre: {x.Genre}</Text>
                 <Text style={{ fontSize: 18 }}>Released: {x.Released}</Text>
@@ -45,7 +45,7 @@ export default function Detail({ route }) {
                         <Text style={{ fontSize: 18 }}>Plot: {x.Plot}</Text>
                         <Text style={{ fontSize: 18 }}>Country: {x.Country}</Text>
                         <Text style={{ fontSize: 18 }}>Awards: {x.Awards}</Text>
-                        <View style={{ width: "100%", height: 1, borderBottomWidth: 0.5, marginVertical: 10 }}></View>
+                        <View style={styles.devider}></View>
                         {x.Ratings.map((y) =>
                             <View>
 
@@ -54,7 +54,7 @@ export default function Detail({ route }) {
                             </View>
 
                         )}
-                        <View style={{ width: "100%", height: 1, borderBottomWidth: 0.5, marginVertical: 10 }}></View>
+                        <View style={styles.devider}></View>
 
 
                     </View>
@@ -64,3 +64,17 @@ export default function Detail({ route }) {
     )
 
 }
+const styles = StyleSheet.create({
+    main: {
+        flex: 1, backgroundColor: "rgba(0,0,0,0.2)", paddingHorizontal: 10
+    },
+    title: {
+        fontSize: 26, color: "black"
+    },
+    devider: {
+        width: "100%", height: 1, borderBottomWidth: 0.5, marginVertical: 10
+    },
+    poster: {
+        height: "30%", width: "100%", marginVertical: 10
+    }
+})
